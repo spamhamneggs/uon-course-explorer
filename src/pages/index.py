@@ -34,10 +34,10 @@ def index_page_sub(campus: str, campus_url: str) -> Response:
     level = request.args.get("level", "")
     semester = request.args.get("semester", "")
     school_cookie = request.cookies.get(LAST_SCHOOL_COOKIE, "")
-    school = request.args.get(
-        "school",
-        school_cookie if school_cookie in school_options else school_options[0],
-    )
+    # Default to the empty string (which corresponds to the "Any" option in
+    # the template) when there is no valid cookie or request parameter.
+    default_school = school_cookie if school_cookie in school_options else ""
+    school = request.args.get("school", default_school)
 
     # Assemble SQL query
     parameters = [campus]
