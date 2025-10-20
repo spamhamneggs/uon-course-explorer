@@ -23,7 +23,25 @@
     <link rel="canonical" href="https://uoncourses.org" />
 {% endblock %}
 {% block main %}
-    <h1><a href="{{ my_url }}" id="title">{{ campus }} Module Search</a></h1>
+    <header class="page-header">
+        <h1 class="site-title"><a href="{{ my_url }}" id="title">{{ campus }} Module Search</a></h1>
+        <nav class="campus-links" aria-label="Campus selector">
+            <a
+                href="{{ url_for('index_page') }}"
+                {% if campus == 'Nottingham' %}aria-current="page"{% endif %}>
+                Nottingham</a>
+            &nbsp;|&nbsp;
+            <a
+                href="{{ url_for('index_page_china') }}"
+                {% if campus == 'China' %}aria-current="page"{% endif %}>
+                China</a>
+            &nbsp;|&nbsp;
+            <a
+                href="{{ url_for('index_page_malaysia') }}"
+                {% if campus == 'Malaysia' %}aria-current="page"{% endif %}>
+                Malaysia</a>
+        </nav>
+    </header>
 
     <!-- Search area -->
     <div id="search-area">
