@@ -17,6 +17,12 @@ tbody tr:nth-child(odd) {
     color: var(--colour-foreground);
 }
 
+/* Campus links (sit next to the title in the page header) */
+.page-header { display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; margin-bottom: 0.5rem; }
+.site-title { margin: 0;}
+.campus-links { font-size: 1rem; white-space: nowrap; }
+.campus-links a[aria-current="page"] { font-weight: bold; text-decoration: underline; }
+
 #search-area {
     display: grid;
     grid-template-areas:
@@ -38,6 +44,9 @@ tbody tr:nth-child(odd) {
         grid-template-columns: min-content min-content min-content auto 90px;
         grid-template-rows: auto auto auto auto;
     }
+    /* Break selector to its own line on smaller screens */
+    .page-header { flex-direction: column; align-items: flex-start; }
+    .campus-links { margin-top: 0.25rem; }
 }
 
 @media (width < 550px) {
